@@ -56,5 +56,9 @@ class ResultAdmin(ModelAdmin):
     list_display_links = ["user", "section", "correct_answers", "score"]
 
 
-admin.site.register(Subject)
+@admin.register(Subject)
+class SubjectAdmin(ModelAdmin):
+    list_display = ['name']
+
+# admin.site.register(Subject)
 # admin.site.register(Answer)

@@ -84,6 +84,13 @@ TEMPLATES = [
     },
 ]
 
+
+UNFOLD = {
+    "SITE_TITLE": "Admin Panel",
+    "SITE_HEADER": "Admin Panel",
+}
+
+
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
