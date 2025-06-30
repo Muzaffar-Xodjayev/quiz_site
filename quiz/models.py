@@ -6,6 +6,9 @@ class UserEntry(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Subject(models.Model):
     name = models.CharField(max_length=100)
@@ -53,15 +56,6 @@ class Question(models.Model):
         return self.text
 
 
-# class Option(models.Model):
-#     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='options')
-#     text = models.CharField(max_length=255)
-#     is_correct = models.BooleanField(default=False)
-#
-#     def __str__(self):
-#         return self.text
-
-
 class Result(models.Model):
     user = models.ForeignKey(UserEntry, on_delete=models.CASCADE, related_name='results')
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
@@ -69,6 +63,9 @@ class Result(models.Model):
     correct_answers = models.PositiveIntegerField()
     score = models.FloatField()
     submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.name
 
 
 class Answer(models.Model):
