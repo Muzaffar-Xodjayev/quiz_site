@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import strip_tags
 from tinymce import models as tinymce_models
 
 
@@ -52,8 +53,12 @@ class Question(models.Model):
         choices=[('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D')]
     )
 
+    def text_preview(self, text):
+        clean_text = strip_tags(text)
+        return clean_text[:50] + ('...' if len(clean_text) > 50 else '')
+
     def __str__(self):
-        return self.text
+        return self.text_preview(text=self.text)
 
 
 class Result(models.Model):
