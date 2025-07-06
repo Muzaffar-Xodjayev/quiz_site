@@ -20,7 +20,7 @@ class SectionQuestionsAPIView(APIView):
 
         for ss in section_subjects:
             questions = Question.objects.filter(subject=ss.subject)
-            serialized_questions = QuestionSerializer(questions, many=True).data
+            serialized_questions = QuestionSerializer(questions, many=True, context={'request': request}).data
 
             result.append({
                 "name": ss.subject.name,
